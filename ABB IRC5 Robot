@@ -1,0 +1,357 @@
+%%%
+  VERSION:1
+  LANGUAGE:ENGLISH
+%%%
+
+MODULE LA440R357020R05
+    !# Process Simulate on eMServer 12.1 to ABB Rapid Volvo download
+    !# ------------------------------------------------
+    !# CREATED   : 01/02/2016 15:24:49 by 1100-16
+    !# CELL      : 357020 RearQtr_Step2_LH
+    !# ROBOT     : 357020R05
+    !# PROGRAM   : LA440R357020R05
+    !# VOLP      : Abb-Rapid-Volvo 3.3
+    !# RCS       : 6.02.irc5
+    !# CONTROLLER: 6.0 RW6
+
+
+    !# ----------------------------------------------
+    !# ------ ROBTARGET
+    !# ----------------------------------------------
+    LOCAL CONST robtarget ToGetCA01_10:=[[2797.07,-267.01,978.68],[0.499997,-0.500002,0.500005,0.499996],[-1,-1,0,1],[9e+09,0,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToGetCA01_20:=[[3203.47,-894.11,857.22],[0.521335,-0.477714,0.521334,0.477714],[-2,-1,0,1],[9e+09,0,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToGetCA01_30:=[[4227.53,-1085.15,857.14],[0.5,-0.5,0.5,0.5],[-2,-1,0,1],[9e+09,0,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToGetCA01_40:=[[4227.8,-625.89,857.09],[0.5,-0.5,0.5,0.5],[-2,-1,0,1],[9e+09,0,9e+09,9e+09,9e+09,9e+09]];
+    PERS robtarget InCA01:=[[4227.80,-575.79,857.59],[0.500193,-0.500232,0.499725,0.499851],[-2,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrGetCA01_10:=[[4227.87,-567.54,896.22],[0.500001,-0.500002,0.499999,0.499998],[-2,-1,0,1],[9e+09,0,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrGetCA01_20:=[[4234.09,-464.51,902.49],[0.499999,-0.500001,0.500001,0.499999],[-2,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrGetCA01_30:=[[4235.52,-442.02,837.23],[0.499998,-0.5,0.500003,0.499999],[-2,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrGetCA01_40:=[[4237.63,-405.77,732.01],[0.454518,-0.541676,0.541677,0.454517],[-2,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrGetCA01_50:=[[4237.82,-342.56,720.85],[0.454518,-0.541677,0.541677,0.454516],[-2,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrGetCA01_60:=[[4237.82,-342.56,720.88],[0.444999,-0.549525,0.549524,0.444997],[-2,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrGetCA01_70:=[[4237.76,-335.74,753.17],[0.444998,-0.549525,0.549524,0.444997],[-2,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrGetCA01_80:=[[4237.79,-335.72,753.16],[0.430461,-0.560985,0.560985,0.43046],[-2,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrGetCA01_90:=[[4145.61,-326.14,789.91],[0.430459,-0.560987,0.560986,0.430458],[-2,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrGetCA01_100:=[[4203.74,-332.44,957.26],[0.430457,-0.560987,0.560987,0.430458],[-2,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrGetCA01_110:=[[4203.69,-181.25,916.72],[0.430456,-0.560987,0.560988,0.430458],[-2,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrGetCA01_120:=[[2767.6,-181.39,916.74],[0.430455,-0.560989,0.560988,0.430455],[-1,-2,1,0],[9e+09,0,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToPutFD07_10:=[[4269.65,-1609.36,4171.02],[0.593034,-0.147016,-0.385109,0.691656],[-1,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToPutFD07_20:=[[4021.61,-1609.36,3286.65],[0.365078,-0.434527,-0.605571,0.557842],[-1,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToPutFD07_30:=[[4163.89,-1609.36,2174.07],[0.026742,-0.65009,-0.7066,0.27818],[0,-1,0,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToPutFD07_40:=[[4440.06,-1599.95,959.49],[0.5,-0.499999,0.5,0.5],[0,2,-1,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToPutFD07_50:=[[4440.04,-1109.99,959.87],[0.5,-0.5,0.5,0.5],[0,2,-1,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget InFD07:=[[4440,-1060,960],[0.500001,-0.500001,0.499999,0.499999],[0,2,-1,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrPutFD07_10:=[[4440.04,-1109.99,959.87],[0.5,-0.499999,0.5,0.5],[0,2,-1,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrPutFD07_20:=[[4440.06,-1599.95,959.49],[0.5,-0.499999,0.5,0.5],[0,2,-1,1],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrPutFD07_30:=[[4274.35,-2231.24,2215.07],[0.0415558,0.553889,0.77023,-0.31341],[0,1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp7765_30:=[[3260.24,-1499.71,1894.97],[0.302709,0.222578,0.63351,-0.676381],[0,-3,0,0],[9e+09,100,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp7765_20:=[[3174.35,-468.32,1794.17],[0.302709,0.222574,0.633512,-0.676381],[0,-3,0,0],[9E+09,100,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp7765_10:=[[2922.64,-506.03,1554.34],[0.302715,0.222567,0.633513,-0.676379],[0,-3,0,0],[9E+09,115,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget A440wp7765:=[[2928.64,-578.74,1561.51],[0.302716,0.222565,0.633513,-0.67638],[0,-3,0,0],[9E+09,50,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget A440wp7763:=[[2961.79,-575.26,1568.04],[0.416687,0.3164,0.571998,-0.631729],[0,-3,0,0],[9E+09,50,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget A440wp7773:=[[2996.34,-572.98,1573.53],[0.402402,0.309905,0.560918,-0.65376],[0,-3,0,0],[9E+09,50,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp7021_50:=[[2995.15,-546.52,1568.68],[0.424959,0.329306,0.549753,-0.639327],[0,-3,0,0],[9e+09,100,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp7021_30:=[[3172.57,-446.61,1792.01],[0.302703,0.222585,0.63351,-0.676382],[0,-3,0,0],[9E+09,100,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp7021_20:=[[3482.65,-434.27,1726.52],[0.417116,0.248158,0.447031,-0.751395],[0,-3,0,0],[9e+09,100,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp7021_10:=[[3355.71,-531.46,1547.58],[0.417116,0.248158,0.447032,-0.751395],[0,-3,0,0],[9e+09,100,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget A440wp7021:=[[3355.67,-573.45,1570.41],[0.417118,0.248155,0.447031,-0.751395],[0,-3,0,0],[9E+09,50.0001,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp7473_20:=[[3355.72,-531.46,1547.58],[0.417116,0.248158,0.447032,-0.751395],[0,-3,0,0],[9e+09,80,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp7473_10:=[[3422.93,-547.84,1559.33],[0.389723,0.231859,0.455692,-0.765965],[0,-3,0,0],[9e+09,80,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget A440wp7473:=[[3422.93,-572.16,1572.57],[0.389726,0.231854,0.455691,-0.765965],[0,-3,0,0],[9E+09,50,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp7019_10:=[[3422.94,-547.84,1559.27],[0.389723,0.231858,0.455692,-0.765965],[0,-3,0,0],[9e+09,80,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget A440wp7019:=[[3449.76,-581.47,1554.83],[0.389725,0.231856,0.455694,-0.765964],[0,-3,0,0],[9E+09,50,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6139G_80:=[[3422.93,-535.15,1552.36],[0.389726,0.231858,0.455689,-0.765965],[0,-3,0,0],[9E+09,99.9998,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6139G_70:=[[3540.71,-464.51,1697.87],[0.389725,0.231862,0.455685,-0.765967],[0,-3,0,0],[9E+09,100,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6139G_60:=[[3540.79,-699.18,1825.01],[0.389721,0.23186,0.455688,-0.765967],[0,-3,0,0],[9e+09,80,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6139G_50:=[[3540.81,-964.98,1968.72],[0.229188,0.136357,0.492764,-0.828289],[0,-3,0,0],[9e+09,80,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6139G_40:=[[3791.71,-976.7,1882.78],[0.431356,0.497816,0.509189,-0.553929],[0,-3,0,0],[9e+09,80,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6139G_30:=[[4016.46,-919.13,1710.4],[0.431358,0.497814,0.509189,-0.553929],[0,-3,0,0],[9e+09,80,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6139G_20:=[[4066.79,-481.55,1698.93],[0.438675,0.491276,0.448596,-0.60413],[0,-3,0,0],[9E+09,100,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6139G_10:=[[4070.58,-459.6,1620.68],[0.438674,0.491275,0.448598,-0.604132],[0,-3,0,0],[9e+09,110,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget A440wp6139G:=[[4006.17,-559.04,1597.24],[0.506515,0.407675,0.483029,-0.586453],[0,-3,0,0],[9E+09,49.9997,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget A440wp6143G:=[[4036.93,-557.30,1595.15],[0.507124,0.406938,0.482251,-0.587078],[0,-3,0,0],[9E+09,50,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget A440wp6141G:=[[4007.43,-550.57,1645.64],[0.507394,0.406584,0.484119,-0.585551],[0,-3,0,0],[9E+09,50.0001,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget A440wp6321G:=[[4036.98,-548.42,1644.37],[0.521368,0.416649,0.474192,-0.574213],[0,-3,0,0],[9E+09,50,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6617G_50:=[[4278.61,-671.08,1355.86],[0.544178,0.738126,0.395856,0.0483605],[0,-2,-2,1],[9E+09,99.9995,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6617G_110:=[[4062.96,-457.93,1621.55],[0.438674,0.491275,0.448598,-0.604132],[0,-3,0,0],[9e+09,110,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6617G_100:=[[4061.81,-472.66,1746.24],[0.495003,0.441794,0.466513,-0.58494],[0,-3,0,0],[9E+09,99.9998,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6617G_90:=[[4000.24,-837.32,1797.89],[0.438675,0.491275,0.448595,-0.604132],[0,-3,0,0],[9E+09,100,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6617G_80:=[[3960.63,-966.45,1761.11],[0.414561,0.482337,0.52388,-0.566604],[0,-1,-2,1],[9E+09,99.9998,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6617G_70:=[[4543.01,-768.39,1925.24],[0.63261,0.720145,0.277256,-0.065771],[0,-2,-2,1],[9e+09,100,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6617G_60:=[[4106.83,-882.69,1437.21],[0.597164,0.722955,0.347088,0.0161779],[0,-2,-2,1],[9E+09,100,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6617G_40:=[[4332.85,-652.75,1324.37],[0.571598,0.725876,0.378718,-0.0543432],[0,-2,-2,1],[9E+09,99.9998,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6617G_30:=[[4479.95,-615.19,1289.33],[0.605992,0.720216,0.337637,-0.00804014],[0,-2,-2,1],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6617G_20:=[[4477.5,-620.54,1246.12],[0.605994,0.720212,0.33764,-0.008043],[0,-2,-2,1],[9e+09,116,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6617G_10:=[[4479.07,-620.69,1248.82],[0.655986,0.691272,0.219806,-0.208593],[0,-2,-2,1],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget A440wp6617G:=[[4477.51,-700.04,1242.10],[0.651131,0.68617,0.23527,-0.223268],[0,-2,-2,1],[9E+09,50.0001,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6611G_20:=[[4477.51,-680.47,1243.21],[0.651138,0.686161,0.235276,-0.223267],[0,-2,-2,1],[9e+09,50,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6611G_10:=[[4570.82,-680.47,1243.12],[0.668877,0.704854,0.171326,-0.162582],[0,-2,-2,1],[9e+09,50,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget A440wp6611G:=[[4570.84,-700.30,1242.08],[0.668881,0.70485,0.171325,-0.162578],[0,-2,-2,1],[9E+09,50.0001,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6677G_110:=[[4570.82,-680.47,1243.15],[0.668877,0.704853,0.171326,-0.162582],[0,-2,-2,1],[9e+09,50,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6677G_100:=[[4488.24,-621.16,1264.27],[0.605897,0.717241,0.343912,-0.0133303],[0,-2,-2,1],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6677G_90:=[[4325.74,-633.99,1342.16],[0.591532,0.69459,0.40918,-0.0143691],[0,-2,-2,1],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6677G_80:=[[4291.28,-653.33,1376.19],[0.572908,0.702307,0.420285,0.0436164],[0,-2,-2,1],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6677G_70:=[[4136.41,-788.08,1478.11],[0.606034,0.723139,0.331339,-0.00275876],[0,-2,-2,1],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6677G_60:=[[4448.09,-847.84,2191.79],[0.594008,0.623809,0.454251,-0.227317],[0,-2,-2,1],[9e+09,116,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6677G_50:=[[4285.14,-1101.85,2798.27],[0.307256,0.107995,-0.72088,0.61177],[0,-1,-2,0],[9e+09,116,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget ToA440wp6677G_40:=[[4786.53,-1081.27,1130.62],[0.204585,-0.0317843,-0.616393,0.759733],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6677G_30:=[[4817.06,-684.57,1039.76],[0.219787,-0.0194105,-0.616897,0.755483],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6677G_20:=[[4734.64,-649.77,1066.41],[0.0842072,0.0692688,-0.643013,0.758053],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp6677G_10:=[[4632.66,-657.51,1116.24],[0.159409,0.133065,-0.632898,0.74587],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget A440wp6677G:=[[4632.43,-720.66,1126.89],[0.147938,0.123334,-0.634863,0.748233],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrA440wp6677G_10:=[[4632.66,-657.51,1116.25],[0.159412,0.133067,-0.6329,0.745868],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrA440wp6677G_20:=[[4734.64,-649.77,1066.42],[0.0842101,0.0692721,-0.643014,0.758052],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrA440wp6677G_30:=[[4817.06,-684.57,1039.77],[0.21979,-0.0194083,-0.616898,0.755482],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrA440wp6677G_40:=[[4786.53,-1081.27,1130.63],[0.204588,-0.0317823,-0.616394,0.759732],[1,-1,-1,0],[9E+09,116,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrA440wp6677G_50:=[[4585.12,-1453.17,1754.96],[0.204585,-0.031783,-0.616389,0.759737],[1,-1,-2,0],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrA440wp6677G_60:=[[4389.18,-1453.17,1869.63],[0.261125,0.039142,-0.594646,0.759393],[0,-1,-2,0],[9e+09,5,9e+09,9e+09,9e+09,9e+09]];
+    LOCAL CONST robtarget FrPutFD07_40:=[[4440.12,-1815.26,1081.30],[0.499999,-0.499997,0.500003,0.500001],[0,2,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget FrPutFD07_50:=[[4274.35,-2231.24,2215.07],[0.0415546,0.55389,0.77023,-0.313409],[0,1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    LOCAL CONST robtarget ToA440wp7021_40:=[[3019.70,-503.41,1641.12],[0.392841,0.301123,0.574674,-0.651729],[0,-3,0,0],[9E+09,100,9E+09,9E+09,9E+09,9E+09]];
+
+
+    !# -----------------------------------------------
+    !# ------ SPOT DATA
+    !# -----------------------------------------------
+    LOCAL PERS spotdata A440SD7765:=[4407765,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD7763:=[4407763,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD7773:=[4407773,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD7021:=[4407021,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD7473:=[4407473,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD7019:=[4407019,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD6139:=[4406139,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD6143:=[4406143,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD6141:=[4406141,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD6321:=[4406321,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD6617:=[4406617,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD6611:=[4406611,1,1,1,1,-1];
+    LOCAL PERS spotdata A440SD6677:=[4406677,1,1,1,1,-1];
+
+    !# -----------------------------------------------
+    !# ------ WOBJ DATA
+    !# -----------------------------------------------
+    !Org OLP data 2017-02-22
+    !PERS wobjdata A440CarCA01:=[False,True,"",[[3254.82,670.76,1030.63],[0.380587,0.040001,-0.096571,-0.918819]],[[0,0,0],[1,0,0,0]]];
+    PERS wobjdata A440CarCA01:=[False,True,"",[[3254.82,670.76,1030.63],[0.380587,0.040001,-0.096571,-0.918819]],[[0,0,0],[1,0,0,0]]];
+
+    ! Measure 1:
+    !PERS wobjdata A440CarFD07:=[False,True,"",[[5099.79,2859.16,50.12],[0,0,0.707107,-0.707107]],[[0,0,0],[1,0,0,0]]];
+    ! MEASURE 2:
+    PERS wobjdata A440CarFD07:=[False,True,"",[[5097.73,2862.36,52.09],[0.000156,-0.000230,0.707391,-0.706823]],[[0,0,0],[1,0,0,0]]];
+
+    !# -----------------------------------------------
+    !# ------ LOAD DATA
+    !# -----------------------------------------------
+    PERS loaddata A440LoadCA01:=[99,[143.3,-188.2,70],[1,0,0,0],7.88,21.72,27.26];
+
+    !# -----------------------------------------------
+    !# ------ PLC SIGNAL
+    !# -----------------------------------------------
+    LOCAL CONST Locksignal AllocateStationCA01:=[3,"AllocateStationCA01"];
+    LOCAL CONST Locksignal ReleaseStationCA01:=[4,"ReleaseStationCA01"];
+    LOCAL CONST Locksignal AllocateStationFD07:=[5,"AllocateStationFD07"];
+    LOCAL CONST Locksignal PinResetFD07:=[13,"PinResetFD07"];
+    LOCAL CONST Locksignal PartCheckStnFD07:=[14,"PartCheckStnFD07"];
+    LOCAL CONST Locksignal ReleaseStationFD07:=[6,"ReleaseStationFD07"];
+    LOCAL CONST Locksignal AllocateZone1:=[21,"AllocateZone1"];
+    LOCAL CONST Locksignal ReleaseZone1:=[22,"ReleaseZone1"];
+    LOCAL CONST Locksignal WorkIsDone:=[31,"WorkIsDone"];
+    LOCAL CONST Locksignal AllocateZone3:=[25,"AllocateZone3"];
+    LOCAL CONST Locksignal ReleaseZone3:=[26,"ReleaseZone3"];
+    LOCAL CONST Locksignal AllocateZone4:=[27,"AllocateZone4"];
+    LOCAL CONST Locksignal ReleaseZone4:=[28,"ReleaseZone4"];
+
+
+    !# -----------------------------------------------
+    !# ------ SCHEDULE
+    !# -----------------------------------------------
+
+    PROC A440Schdefault()
+        Reset O_Homepos;
+        ToolChange GrippGH05a;
+        WaitSignal AllocateStationCA01;
+        A440GetCA01_Seg1;
+        A440GetCA01_Seg2;
+        A440GetCA01_Seg3;
+        WaitSignal ReleaseStationCA01;
+        WaitSignal AllocateStationFD07;
+        WaitSignal AllocateZone3;
+        WaitSignal AllocateZone4;
+        A440PutFD07_Seg1;
+        A440PutFD07_Seg2;
+        WaitSignal PinResetFD07;
+        A440PutFD07_Seg3;
+        WaitSignal ReleaseZone3;
+        WaitSignal ReleaseZone4;
+        ToolChange GunWS05a;
+        WaitSignal PartCheckStnFD07;
+        WaitSignal ReleaseStationFD07;
+        WaitSignal AllocateStationFD07;
+        WaitSignal AllocateZone3;
+        WaitSignal AllocateZone4;
+        A440WeldDefault_seg1;
+        WaitSignal AllocateZone1;
+        A440WeldDefault_seg2;
+        WaitSignal ReleaseZone1;
+        A440WeldDefault_seg3;
+        WaitSignal ReleaseZone3;
+        WaitSignal ReleaseZone4;
+        WaitSignal ReleaseStationFD07;
+        !Autodress GunWS05a;
+        WaitSignal WorkIsDone;
+        ToolChange GrippGH05a;
+    ENDPROC
+
+    LOCAL PROC A440GetCA01_Seg1()
+        MoveAbsJ HomeGrippGH05a,v2500,z200,GrippGH05aTCP;
+        GripperChkNoneParts GrippGP05aEquip;
+        GripperOpenAll\Conc,GrippGP05aEquip;
+        MoveJ ToGetCA01_10,v2500,z200,GrippGH05aTCP\Wobj:=A440CarCA01;
+        MoveL ToGetCA01_20,v2500,z200,GrippGH05aTCP\Wobj:=A440CarCA01;
+        GripperOpen\Conc,GrippGP05aClampSeq1Opn;
+        MoveL ToGetCA01_30,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01;
+        MoveL ToGetCA01_40,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01;
+        MoveL InCA01,v500,fine,GrippGH05aTCP\WObj:=A440CarCA01;
+        GripperClose GrippGP05aClampSeq1Cls;
+        RETURN ;
+    ENDPROC
+
+    LOCAL PROC A440GetCA01_Seg2()
+        MoveL FrGetCA01_10,v200,fine,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        GripperChkAllParts GrippGP05aEquip;
+        RETURN ;
+    ENDPROC
+
+    LOCAL PROC A440GetCA01_Seg3()
+        MoveL FrGetCA01_20,v2500,z200,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        MoveL FrGetCA01_30,v2500,z200,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        !Teach positions with part and with hanger
+        Stop;
+        !MoveL FrGetCA01_40,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        !MoveL FrGetCA01_50,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        !MoveL FrGetCA01_60,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        !MoveL FrGetCA01_70,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        !MoveL FrGetCA01_80,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        !MoveL FrGetCA01_90,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        MoveL FrGetCA01_100,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        MoveL FrGetCA01_110,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        MoveJ FrGetCA01_120,v2500,z50,GrippGH05aTCP\Wobj:=A440CarCA01\TLoad:=A440LoadCA01;
+        RETURN ;
+    ENDPROC
+
+    LOCAL PROC A440PutFD07_Seg1()
+        MoveJ ToPutFD07_10,v2500,z200,GrippGH05aTCP\Wobj:=A440CarFD07\TLoad:=A440LoadCA01;
+        MoveJ ToPutFD07_20,v2500,z200,GrippGH05aTCP\Wobj:=A440CarFD07\TLoad:=A440LoadCA01;
+        MoveJ ToPutFD07_30,v2500,z200,GrippGH05aTCP\Wobj:=A440CarFD07\TLoad:=A440LoadCA01;
+        MoveL ToPutFD07_40,v2500,z200,GrippGH05aTCP\Wobj:=A440CarFD07\TLoad:=A440LoadCA01;
+        MoveL ToPutFD07_50,v2500,z200,GrippGH05aTCP\Wobj:=A440CarFD07\TLoad:=A440LoadCA01;
+        MoveL InFD07,v500,fine,GrippGH05aTCP\WObj:=A440CarFD07\TLoad:=A440LoadCA01;
+        !FrameJ InFD07,v200,fine,GrippGH05aTCP,A440CarFD07 \TLoad:=A440LoadCA01;
+        GripperOpen GrippGP05aClampSeq1Opn;
+        RETURN ;
+    ENDPROC
+
+    LOCAL PROC A440PutFD07_Seg2()
+        MoveL FrPutFD07_10,v200,fine,GrippGH05aTCP\Wobj:=A440CarFD07;
+        GripperChkNoneParts GrippGP05aEquip;
+        RETURN ;
+    ENDPROC
+
+    LOCAL PROC A440PutFD07_Seg3()
+        MoveL FrPutFD07_20,v2500,z200,GrippGH05aTCP\Wobj:=A440CarFD07;
+        MoveL FrPutFD07_40,v2500,z200,GrippGH05aTCP\WObj:=A440CarFD07;
+        MoveJ FrPutFD07_30,v2500,z200,GrippGH05aTCP\Wobj:=A440CarFD07;
+        MoveAbsJ HomeGrippGH05a,v2500,z200,GrippGH05aTCP;
+        RETURN ;
+    ENDPROC
+
+    LOCAL PROC A440WeldDefault_seg1()
+        MoveAbsJ HomeGunWS05a,v2500,fine,GunWS05aTCP;
+        MoveJ ToA440wp7765_30,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp7765_20,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp7765_10,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        RETURN ;
+    ENDPROC
+
+    LOCAL PROC A440WeldDefault_seg2()
+        !MoveL A440wp7765,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp7765,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD7765,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp7763,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp7763,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD7763,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp7773,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp7773,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD7773,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp7021_50,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        RETURN ;
+    ENDPROC
+
+    LOCAL PROC A440WeldDefault_seg3()
+        MoveL ToA440wp7021_40,v2500,z200,GunWS05aTCP\WObj:=A440CarFD07;
+        MoveL ToA440wp7021_30,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp7021_20,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp7021_10,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp7021,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp7021,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD7021,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp7473_20,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp7473_10,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp7473,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp7473,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD7473,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp7019_10,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp7019,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp7019,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD7019,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6139G_80,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6139G_70,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6139G_60,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6139G_50,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6139G_40,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6139G_30,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6139G_20,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6139G_10,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp6139G,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp6139G,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD6139,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp6143G,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp6143G,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD6143,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp6141G,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp6141G,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD6141,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp6321G,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp6321G,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD6321,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6617G_110,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6617G_100,v2500,z1,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6617G_90,v2500,z1,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6617G_80,v2500,z1,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6617G_70,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6617G_60,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6617G_50,v2500,z200,GunWS05aTCP\WObj:=A440CarFD07;
+        MoveL ToA440wp6617G_40,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6617G_30,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6617G_20,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6617G_10,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp6617G,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp6617G,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD6617,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6611G_20,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6611G_10,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp6611G,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp6611G,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD6611,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6677G_110,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6677G_100,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6677G_90,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6677G_80,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6677G_70,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6677G_60,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6677G_50,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ ToA440wp6677G_40,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6677G_30,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6677G_20,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL ToA440wp6677G_10,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        !MoveL A440wp6677G,v2500,fine,GunWS05aTCP\Wobj:=A440CarFD07;
+        SpotL A440wp6677G,v2500,GunWS05a,\GunD:=GunWS05aGunData,A440SD6677,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL FrA440wp6677G_10,v2500,z50,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL FrA440wp6677G_20,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL FrA440wp6677G_30,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveL FrA440wp6677G_40,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ FrA440wp6677G_50,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveJ FrA440wp6677G_60,v2500,z200,GunWS05aTCP\Wobj:=A440CarFD07;
+        MoveAbsJ HomeGunWS05a,v2500,fine,GunWS05aTCP;
+        RETURN ;
+    ENDPROC
+
+ENDMODULE
